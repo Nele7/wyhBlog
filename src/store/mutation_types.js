@@ -1,0 +1,1 @@
+export const HEAD_LINE = 'HEAD_LINE'
