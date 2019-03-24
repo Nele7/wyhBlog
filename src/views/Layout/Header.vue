@@ -1,32 +1,67 @@
 <template>
     <header>
         <div class="bg"></div>
-        <nav class="nav-bar">
-            <div class="nav-item">
-                <router-link to="../home">主页</router-link>
-            </div>
-            <div class="nav-item">
-                <router-link to="../tages">标签</router-link>
-            </div>
-            <div class="nav-item">
-                <router-link to="../about">关于</router-link>
+        <nav>
+            <div class="nav-bar">
+                <div class="nav-item">
+                    <router-link to="../home">主页</router-link>
+                </div>
+                <div class="nav-item">
+                    <router-link to="../tages">标签</router-link>
+                </div>
+                <div class="nav-item">
+                    <router-link to="../about">关于</router-link>
+                </div>
             </div>
         </nav>
         <div class="title">
             <transition name="fade">
-                <h1>主页</h1>
+                <h1 v-if="show_title">{{mainTitle}}</h1>
             </transition>
         </div>
     </header>
 </template>
 
 <script>
+    import { mapState } from 'vuex'
+import { setTimeout } from 'timers';
     export default {
-        
+        data() {
+            return {
+                mainTitle: '',
+                show_title: true
+            }
+        },
+        computed: mapState(['headline']),
+        mounted(){
+            
+        },
+        watch:{
+            headline(val){
+                this.show_title = false
+                setTimeout(()=>{
+                    this.show_title = true
+                    this.mainTitle = val
+                },200)
+            }
+        }
     }
 </script>
 
 <style scoped lang="scss">
+.fade-enter-active,.fade-leave-active{
+    transition: all .6s;
+}
+.fade-enter,.fade-leave-to{
+    opacity: 0;
+    transform: translateY(-80px)
+}
+nav{
+    padding: 2rem;
+    padding-bottom: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 header{
     display: flex;
     flex-direction: column;

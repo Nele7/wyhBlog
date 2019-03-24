@@ -1,3 +1,3 @@
 export default {
-    changeHand:({commit},headeline) => commit(HEAD_LINE,headeline)
+    changeHeadLine:({commit},headline) => commit('HEAD_LINE',headline)
 }

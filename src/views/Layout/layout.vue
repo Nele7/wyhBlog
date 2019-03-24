@@ -1,7 +1,8 @@
 <template>
     <div class="wrapper">
         <v-header class="head"></v-header>
-        <router-view class="content"></router-view>
+            <router-view class="content"></router-view>
+        
         <v-footer class="foot"></v-footer>
     </div>
 </template>
@@ -18,6 +19,13 @@
 </script>
 
 <style scoped lang="scss">
+.faderouter-enter-active,.faderouter-leave-active{
+    transition: all .3s;
+}
+.faderouter-enter,.faderouter-leave-to{
+    opacity: 0;
+    // transform: translateY(-10px)
+}
 .wrapper{
     display: flex;
     flex-direction: column;
@@ -27,6 +35,19 @@
     }
     .content{
         flex: 1 0 auto;
+        font-size:1.8rem;
+        margin: 0 auto;
+        width: 100%;
+        padding: 2rem;
+        padding-bottom: 0;
+        max-width: 1000px;
+    }
+}
+@media screen and (max-width: 480px){
+    .wrapper{
+        .content{
+            padding: 0;
+        }
     }
 }
 </style>

@@ -19,9 +19,14 @@
       color:#404040;
       height: 100%;
       overflow-y: scroll;
+      // background: #eee;
+      // background: linear-gradient(100deg,#4acaa8,#007aff);
   }
   /*样式重置*/
   a{
     text-decoration: none;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  li{
+    list-style: none;
   }
