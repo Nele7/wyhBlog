@@ -3,8 +3,8 @@
         <div class="content-list">
             <div class="content-item" v-for="(item,index) in article" :key="index">
                 <div class="post-title">
-                    <!-- <a href="" class="text">es6-Promise</a> -->
-                    <router-link to="/article/123">{{item.title}}</router-link>
+                    <a class="text">{{item.title}}</a>
+                    <!-- <router-link to="/article/123">{{item.title}}</router-link> -->
                     <a href="" class="time">{{item.createTime}}</a>
                 </div>
                 <div class="post-desc">
@@ -94,7 +94,7 @@
                 overflow: hidden;
             }
             .post-footer{
-                padding: 2rem;
+                padding: 1rem;
                 border-top:1px solid #ddd;
                 a{
                     display: inline-block;
