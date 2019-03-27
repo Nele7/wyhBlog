@@ -27,12 +27,12 @@ export default new Router({
     },
     {
       path:'/admin',
-      name:'admin',
+      name:'博客管理',
       component:() => import('../views/safeManager/admin.vue'),
       children:[
         {path:'',redirect:'articleList'},
-        {path:'articleList',name: 'articleList',component: () => import( '../views/safeManager/articleList.vue')},
-        {path:'classList',name: 'classList',component: () => import( '../views/safeManager/classList.vue')},
+        {path:'articleList',name: '文章管理',component: () => import( '../views/safeManager/articleList.vue')},
+        {path:'classList',name: '分类管理',component: () => import( '../views/safeManager/classList.vue')},
       ]
     }
   ]
