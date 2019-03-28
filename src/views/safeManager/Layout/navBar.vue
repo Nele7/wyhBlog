@@ -5,7 +5,7 @@
                 <span style="cursor:pointer">Freeze&nbsp;<i style="color:#20a0ff">Blogs</i></span>
             </el-col>
             <el-col :span='5' class='rightbar'>
-                <el-button type="text">注销</el-button>
+                <el-button type="text" @click="con">注销</el-button>
             </el-col>
         </el-col>
     </el-row>
@@ -13,7 +13,19 @@
 
 <script>
     export default {
-        
+        methods: {
+            con() {
+                this.$confirm("确认退出吗?", "提示", {
+                    confirmButtonText: "确定",
+                    cancelButtonText: "取消",
+                    type: "warning"
+                })
+                .then(() => {
+                    
+                })
+                .catch(() => {});
+            },
+        },
     }
 </script>
 

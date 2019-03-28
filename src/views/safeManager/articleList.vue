@@ -3,7 +3,7 @@
         <el-col :span="24" class="article">
             <!-- <el-button type="success" class="btn">新建文章</el-button> -->
         </el-col>
-        <el-button type="success" class="btn">新建文章</el-button>
+        <el-button type="success" class="btn" icon="el-icon-circle-plus-outline" @click="createArticle">新建文章</el-button>
         <el-col :span="24" class="article-content">
             <el-table
                 :data="articleLists"
@@ -55,6 +55,36 @@ export default {
                     title:'百分比'
                 },
             ]
+        }
+    },
+    methods: {
+        // 新建文章
+        createArticle() {
+            this.$router.push('/admin/articleCreate')
+        },
+        // 编辑
+        editArticle(articleId){
+            this.$router.push('/admin/articleEdit')
+        },
+        // 查看
+        read(articleId){
+            this.$router.push(`/article/${articleId}`)
+        },
+        // 删除
+        remove(){
+            this.$confirm('确认要删除吗?','提醒',{
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type:'waring'
+            })
+            .then(()=>{
+                // 删除操作
+                this.$notify({
+                  title:'成功',
+                  message:"删除成功",
+                  type:'success'
+                })
+            })
         }
     },
 };

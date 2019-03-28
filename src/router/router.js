@@ -5,11 +5,16 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'home',
-    //   component: Home
-    // },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/login.vue')
+    },
+    {
+        path: '*',
+        name: 'NotFound',
+        component: () => import('../views/404.vue')
+    },
     {
       path: '/',
       name: 'Layout',
@@ -33,6 +38,8 @@ export default new Router({
         {path:'',redirect:'articleList'},
         {path:'articleList',name: '文章管理',component: () => import( '../views/safeManager/articleList.vue')},
         {path:'classList',name: '分类管理',component: () => import( '../views/safeManager/classList.vue')},
+        {path:'articleCreate',name: '发布文章',component: () => import( '../views/safeManager/articleCreate.vue')},
+        {path:'articleEdit',name: '编辑文章',component: () => import( '../views/safeManager/articleEdit.vue')},
       ]
     }
   ]
