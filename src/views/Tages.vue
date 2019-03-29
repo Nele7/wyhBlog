@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="classfiy">
-            <div v-for="(item,index) in classfiyList" class="classfiy-item" :class="{'active':classfiyActive==index}" :key="index">{{item}}</div>
+            <div v-for="(item,index) in classfiyList" class="classfiy-item" :class="{'active':classfiyActive==index}" :key="index" @click="gets(index)">{{item}}</div>
         </div>
         <article-item :article = "articleList"></article-item>
     </div>
@@ -27,6 +27,11 @@
         mounted(){
             this.$store.dispatch('changeHeadLine','标签')
         },
+        methods: {
+            gets(ind) {
+                this.classfiyActive = ind
+            }
+        },
         components:{
             articleItem
         }
@@ -40,12 +45,17 @@
     margin: 2rem 0;
     .classfiy-item{
         padding:0.3rem 2rem;
-        border:1px solid #eee;
+        border:1px solid hsla(0, 0%, 93%, 0.836);
         margin-right: 0.5rem;
         cursor: pointer;
+        transition: 0.5s all;
         &.active{
-            background: #3f51b5;
-            color:#fff;
+            background: hsla(0, 0%, 93%, 0.836);
+            color:hsla(0, 0%, 6%, 0.69);
+        }
+        &:hover{
+            background: hsla(0, 0%, 93%, 0.836);
+            color:hsla(0, 0%, 6%, 0.69);
         }
     }
 }

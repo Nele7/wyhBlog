@@ -8,7 +8,7 @@
 					</el-breadcrumb-item>
 				</el-breadcrumb>
             </el-col>
-            <!-- 加上mode属性解决路由跳转的问题 -->
+            <!-- 加上mode属性解决路由跳转动画的问题 -->
             <transition name="fade" mode="out-in">
                 <router-view></router-view>
             </transition>
