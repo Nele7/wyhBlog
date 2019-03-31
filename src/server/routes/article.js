@@ -4,14 +4,17 @@ const api = require('../api');
 
 
 // 获取所有文章列表
-router.get('/lists',async(ctx)=>{
+router.post('/lists',async(ctx)=>{
     try{
-        let articleLists = await api.getArticlesList()
-        console.log(articleLists)
+        let name = ctx.request.body.q
         ctx.body = {
-            code:200,
-            message:articleLists
+            m:name
         }
+        // let articleLists = await api.getArticlesList()
+        // ctx.body = {
+        //     code:200,
+        //     message:articleLists
+        // }
     }catch(err){
         ctx.body = {
             code:-200,

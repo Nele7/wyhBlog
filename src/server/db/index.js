@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const POOL = mysql.createPool({
   host:'localhost', //连接数据库所在的主机名
   user:'root',      //MySQL用户的用户名
-  password:'1234',  //MySQL用户的密码
+  password:'123',  //MySQL用户的密码
   database:'wyh',  //链接到的数据库名称
 });
 

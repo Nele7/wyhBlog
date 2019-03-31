@@ -2429,7 +2429,8 @@ electron-to-chromium@^1.3.116:
 
 element-ui@^2.6.3:
   version "2.6.3"
-  resolved "http://registry.npm.taobao.org/element-ui/download/element-ui-2.6.3.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Felement-ui%2Fdownload%2Felement-ui-2.6.3.tgz#e5c87ca3cdc988586320c826872720a8cdc7db44"
+  resolved "http://registry.npm.taobao.org/element-ui/download/element-ui-2.6.3.tgz#e5c87ca3cdc988586320c826872720a8cdc7db44"
+  integrity sha1-5ch8o83JiFhjIMgmhycgqM3H20Q=
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"

@@ -1,11 +1,11 @@
 const Koa = require('koa')
 const cors = require('koa2-cors')
-const bodyParser = require('koa-bodyParser')
+const bodyParser = require('koa-bodyparser');
 const routes = require('./routes');
 
 const app = new Koa()
 
-app.use(bodyParser())
+app.use(bodyParser());
 //跨域
 app.use(cors({
     origin: function (ctx) {
