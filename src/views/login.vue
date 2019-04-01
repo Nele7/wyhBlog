@@ -67,7 +67,7 @@ export default {
         handleSubmit() {
             this.$refs.user.validate(valid => {
                 if (valid) {
-                  this.$message('qwe')
+                    this.$store.dispatch('userLogin',this.user)
                 } else {
                     // 这个else只是防止什么都没填写
                     return false;

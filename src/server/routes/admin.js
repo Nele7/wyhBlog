@@ -19,14 +19,15 @@ const createToken = require('../middleware/createToken')
 
 router.post('/login',async(ctx) => {
     try{
-        let name = ctx.request.body.name
-        let pwd = ctx.request.body.password
+        let name = ctx.request.body.account
+        let pwd = ctx.request.body.checkPass
         // let name = ctx.request.query.name
         let result = await api.getUserByName(name,pwd)
+        console.log(result)
         if(result.length !== 0){
             ctx.body = {
                 code:200,
-                message:createToken(name)
+                message:{token:createToken(name)}
             }
         }else{
             ctx.body = {

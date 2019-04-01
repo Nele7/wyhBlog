@@ -5,7 +5,8 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import api from '../assets/js/axios'
+    // import {localLogin} from '../assets/js/axios'
     export default {
         data() {
             return {
@@ -13,7 +14,7 @@
             }
         },
         created() {
-            axios.post('http://localhost:3009/api/admin/login',{
+            api.localLogin({
                 name:'wangyuhan',
                 password:123
             }).then((res)=>{
