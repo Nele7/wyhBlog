@@ -21,7 +21,7 @@
                     type: "warning"
                 })
                 .then(() => {
-                    
+                    this.$store.dispatch('userLogout')
                 })
                 .catch(() => {});
             },

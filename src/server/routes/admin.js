@@ -13,17 +13,17 @@ const createToken = require('../middleware/createToken')
 /**
  * 登录操作，判断用户名和密码是否正确
  * @param string account 用户名
- * @param string pwssword 密码
+ * @param string checkPass 密码
  * @return token 若用户名和密码输入正确，返回token；否则，返回错误
  */
 
-router.post('/login',async(ctx) => {
+router
+.post('/login',async(ctx) => {
     try{
         let name = ctx.request.body.account
         let pwd = ctx.request.body.checkPass
         // let name = ctx.request.query.name
         let result = await api.getUserByName(name,pwd)
-        console.log(result)
         if(result.length !== 0){
             ctx.body = {
                 code:200,

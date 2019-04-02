@@ -27,5 +27,10 @@ export default {
                 });
             }
         })
-    } 
+    },
+    // 注销
+    userLogout:({commit}) => {
+        commit('USER_SIGNOUT')
+        router.replace('/login')
+    }
 }

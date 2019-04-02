@@ -57,6 +57,14 @@ export default {
             ]
         }
     },
+    mounted(){
+        this.$api.lists({
+            page:10,
+            pageSize:1
+        }).then((res)=>{
+            console.log(res)
+        })
+    },
     methods: {
         // 新建文章
         createArticle() {
