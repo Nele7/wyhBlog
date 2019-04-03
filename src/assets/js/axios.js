@@ -53,5 +53,13 @@ export default {
     // admin 获取文章列表
     lists(data){
         return back.post('/article/lists',data)
+    },
+    // 根据文章id，获取一篇文章
+    getOneArticle(data){
+        return back.post('/article/onePage',data)
+    },
+    // 文章编辑
+    editArticle(data){
+        return back.post('/article/update',data)
     }
 }

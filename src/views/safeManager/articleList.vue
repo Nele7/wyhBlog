@@ -11,59 +11,43 @@
                 v-loading="listLoading" element-loading-text="拼命加载中"
             >
                 <el-table-column type='index' width="60" ></el-table-column>
-                <el-table-column prop="createTime" label="创建时间" sortable width="180"></el-table-column>
-                <el-table-column prop="classType" label="所属分类" width="180"></el-table-column>
-                <el-table-column prop="title" label="文章标题"></el-table-column>
+                <el-table-column prop="create_time" label="创建时间" sortable width="180"></el-table-column>
+                <el-table-column prop="class_type" label="所属分类" width="180"></el-table-column>
+                <el-table-column prop="article_title" label="文章标题" ></el-table-column>
                 <el-table-column  min-width="180" label="操作">
                     <template slot-scope='scope'>
                         <el-button size="small" @click="read(scope.row.articleId)">查看</el-button>
-                        <el-button size="small" type='primary' @click="editArticle(scope.row.articleId)">编辑</el-button>
-                        <el-button size="small" type='danger' @click="remove(scope.row.articleId)">删除</el-button>
+                        <el-button size="small" type='primary' @click="editArticle(scope.row.article_id)">编辑</el-button>
+                        <el-button size="small" type='danger' @click="remove(scope.row.article_id)">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
             <el-pagination
                 layout="prev,pager,next"
-                @current-change="handle"
+                @current-change="handleCurrentChange"
                 :total="total"
-                :page-size="limit"
-                style="float:right"
+                :current-page="page"
+                :page-size="pageSize"
+                style="float:right;padding:20px"
             ></el-pagination>
         </el-col>
     </el-row>
 </template>
 
 <script>
+import { setTimeout } from 'timers';
 export default {
     data() {
         return {
             listLoading:false,
-            articleLists: [
-                {
-                    createTime:'2019-10-23 14:23:11',
-                    classType:'方法',
-                    title:'阿什坎迪'
-                },
-                {
-                    createTime:'2019-09-22 14:23:11',
-                    classType:'阿达',
-                    title:'哈哈'
-                },
-                {
-                    createTime:'2019-12-23 14:23:11',
-                    classType:'好得多',
-                    title:'百分比'
-                },
-            ]
+            articleLists: [],
+            total:0,            // 总条数
+            page:1,             // 当前页数
+            pageSize:10          // 当前页数的条数    
         }
     },
-    mounted(){
-        this.$api.lists({
-            page:10,
-            pageSize:1
-        }).then((res)=>{
-            console.log(res)
-        })
+    created(){
+        this.getArticleLists()
     },
     methods: {
         // 新建文章
@@ -72,7 +56,7 @@ export default {
         },
         // 编辑
         editArticle(articleId){
-            this.$router.push('/admin/articleEdit')
+            this.$router.push(`/admin/articleEdit/${articleId}`)
         },
         // 查看
         read(articleId){
@@ -92,6 +76,28 @@ export default {
                   message:"删除成功",
                   type:'success'
                 })
+            })
+        },
+        // 分页变化
+        handleCurrentChange(pages){
+            this.page = pages
+            this.getArticleLists()
+        },
+        // 获取文章列表
+        getArticleLists(){
+            this.listLoading = true
+            this.$api.lists({
+                page:this.page,
+                pageSize:this.pageSize
+            }).then(({data:{code,articleLists,total}})=>{
+                if(code === 200){
+                    setTimeout(()=>{
+                        this.listLoading = false
+                        this.articleLists = articleLists
+                        this.total = total
+                    },this.$con.BACKLOADTIME)
+                    
+                }
             })
         }
     },

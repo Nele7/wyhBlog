@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 module.exports = function (ctx,next) {
     // 判断请求头headers是否授权
     if(ctx.request.headers['authorization']){
-        let token = ctx.request.headers['authorization'].split(' ')[0]
+        let token = ctx.request.headers['authorization'].split(' ')[1]
         let decoded = jwt.decode(token,process.env.JWT_SECRET)
         // 如果过期了就重新登录
         if(token && decoded.exp <= Date.now()/1000){

@@ -34,13 +34,13 @@ export default [
     {
       path:'/admin',
       name:'博客管理',
-      component:() => import('../views/safeManager/admin.vue'),
+      component:() => import('../views/safeManager/Layout/admin.vue'),
       children:[
         {path:'',redirect:'articleList'},
         {path:'articleList',name: '文章管理',component: () => import( '../views/safeManager/articleList.vue')},
         {path:'classList',name: '分类管理',component: () => import( '../views/safeManager/classList.vue')},
         {path:'articleCreate',name: '发布文章',component: () => import( '../views/safeManager/articleCreate.vue')},
-        {path:'articleEdit',name: '编辑文章',component: () => import( '../views/safeManager/articleEdit.vue')},
+        {path:'articleEdit/:articleId',name: '编辑文章',component: () => import( '../views/safeManager/articleEdit.vue')},
       ]
     }
   ]

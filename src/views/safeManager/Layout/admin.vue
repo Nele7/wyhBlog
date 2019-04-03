@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import {navBar, sideBar, appMain} from './Layout'
+    import {navBar, sideBar, appMain} from './index'
     export default {
         components:{
             navBar, sideBar, appMain
