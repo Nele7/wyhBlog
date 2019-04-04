@@ -16,7 +16,7 @@
                 <el-table-column prop="article_title" label="文章标题" ></el-table-column>
                 <el-table-column  min-width="180" label="操作">
                     <template slot-scope='scope'>
-                        <el-button size="small" @click="read(scope.row.articleId)">查看</el-button>
+                        <el-button size="small" @click="read(scope.row.article_id)">查看</el-button>
                         <el-button size="small" type='primary' @click="editArticle(scope.row.article_id)">编辑</el-button>
                         <el-button size="small" type='danger' @click="remove(scope.row.article_id)">删除</el-button>
                     </template>
@@ -63,18 +63,27 @@ export default {
             this.$router.push(`/article/${articleId}`)
         },
         // 删除
-        remove(){
+        remove(articleId){
             this.$confirm('确认要删除吗?','提醒',{
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type:'waring'
             })
             .then(()=>{
-                // 删除操作
-                this.$notify({
-                  title:'成功',
-                  message:"删除成功",
-                  type:'success'
+                this.$api.deleteOneArticle({
+                    articleId
+                })
+                .then(({data:{code,message}}) => {
+                    if(code === 200){
+                        this.$notify({
+                            title:'成功',
+                            message:message,
+                            type:'success'
+                        })
+                        setTimeout(()=>{
+                            this.getArticleLists()
+                        },this.$con.BACKLOADTIME)
+                    }
                 })
             })
         },

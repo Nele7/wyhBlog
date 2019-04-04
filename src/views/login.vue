@@ -74,9 +74,6 @@ export default {
                 }
             });
         }
-        // toReg(){
-        //    this.$router.push({path:'/reg'})
-        // }
     }
 };
 </script>

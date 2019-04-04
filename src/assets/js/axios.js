@@ -61,5 +61,28 @@ export default {
     // 文章编辑
     editArticle(data){
         return back.post('/article/update',data)
+    },
+    // 删除一篇文章
+    deleteOneArticle(data){
+        return back.post('/article/delete',data)
+    },
+
+    // 获取分类列表
+    classList(data){
+        return back.post('/classify/list',data)
+    },
+    // 新建分类
+    createClass(data){
+        return back.post('/classify/create',data)
+    },
+    // 编辑分类
+    editClass(data){
+        return back.post('/classify/edit',data)
+    },
+    // 删除分类
+    deleteClass(data){
+        return back.post('/classify/delete',data)
     }
+    
+    
 }

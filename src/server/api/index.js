@@ -1,7 +1,7 @@
 const query = require('../db/');
 const {PAGECOUNT} = require('../config/');
 module.exports = {
-    // 查询所有的文章
+    // 查询所有的文章 管理员
     getArticlesList:function(page,pageSize) {
         if(page && pageSize){
             let start = (page-1)*pageSize //从start处开始查询，查询limit条
@@ -34,8 +34,37 @@ module.exports = {
                     class_type = '${class_type}'
                     WHERE article_id = ${article_id}`)
     },
-    // 根据 文章id 获取一篇其中文章
+    // 根据文章id 获取一篇其中文章 管理员
     getOneArticle(articleId){
         return query(`SELECT article_id,article_title,article_brief,article_content,class_type FROM article WHERE article_id = ${articleId}`)
+    },
+    // 删除一篇文章 管理员
+    deleteOneArticle(articleId){
+        return query(`DELETE FROM article WHERE article_id = '${articleId}'`)
+    },
+    // 获取分类列表 管理员
+    getClassList(page,pageSize){
+        if(page && pageSize){
+            let start = (page-1)*pageSize
+            return Promise.all([
+                query(`SELECT class_id,create_time,class_type FROM classify ORDER BY class_id DESC LIMIT ${start},${pageSize}`),
+                query(`SELECT count(class_id) FROM classify`)
+            ])
+        }else{
+            return query(`SELECT * FROM classify ORDER BY create_time DESC`)
+        }
+    },
+    // 新建分类 管理员
+    createClass({class_type,create_time}){
+        return query(`INSERT INTO classify(class_type,create_time) VALUES('${class_type}','${create_time}')`)
+    },
+    // 编辑分类 管理员
+    editClass({class_type,class_id}){
+        return query(`UPDATE classify SET class_type = '${class_type}' WHERE class_id = ${class_id}`)
+    },
+    // 删除一条分类
+    deleteOneClass(class_id){
+        return query(`DELETE FROM classify WHERE class_id = ${class_id}`)
     }
+    
 }

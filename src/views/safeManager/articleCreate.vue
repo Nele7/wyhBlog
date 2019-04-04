@@ -11,7 +11,7 @@
                 <el-col :span="24">
                     <el-form-item label="所属分类" label-width="90px" prop="class_type">
                         <el-select placeholder="请选择分类" v-model="article.class_type">
-                            <el-option v-for="(item,index) in classifyList" :key="index" :value="item">{{item}}</el-option>
+                            <el-option v-for="(item,index) in classifyList" :key="index" :value="item.class_type">{{item.class_type}}</el-option>
                         </el-select>
                     </el-form-item>
                 </el-col>
@@ -54,7 +54,7 @@
     export default {
         data() {
             return {
-                classifyList: ['JS','Vue','React'],
+                classifyList: [],
                 load:false,
                 btnText:'立即发布',
                 article:{
@@ -88,6 +88,9 @@
                 });
                 return marked(this.article.article_content);
             }
+        },
+        created(){
+            this.getClassList()
         },
         methods: {
             //发布或者编辑
@@ -137,6 +140,15 @@
             // 取消操作
             cancle(){
                 this.$router.push({ path: "/admin/articleList" });
+            },
+            // 获取分类列表
+            getClassList(){
+                this.$api.classList({})
+                .then(({data:{code,classList,total}}) => {
+                    if(code === 200){
+                        this.classifyList = classList
+                    }
+                })
             }
         },
     }

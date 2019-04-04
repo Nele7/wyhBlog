@@ -9,7 +9,6 @@ router
     try{
         let page = ctx.request.body.page //当前第几页
         let pageSize = ctx.request.body.pageSize //当前页的条数
-        
         await checkToken(ctx,next)
         let result = await api.getArticlesList(page,pageSize)
         if(result.length === 2){
@@ -83,6 +82,23 @@ router
         ctx.body = {
             code:-200,
             message:err.toString()
+        }
+    }
+})
+// 删除一篇文章，需要权限
+.post('/delete',async(ctx,next) => {
+    try{
+        let articleId = ctx.request.body.articleId
+        await checkToken(ctx,next)
+        await api.deleteOneArticle(articleId)
+        ctx.body = {
+            code:200,
+            message:'删除成功'
+        }
+    }catch(err){
+        ctx.body = {
+            code:-200,
+            message:'删除失败'
         }
     }
 })
