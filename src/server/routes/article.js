@@ -9,7 +9,7 @@ router
     try{
         let page = ctx.request.body.page //当前第几页
         let pageSize = ctx.request.body.pageSize //当前页的条数
-        await checkToken(ctx,next)
+        // await checkToken(ctx,next)
         let result = await api.getArticlesList(page,pageSize)
         if(result.length === 2){
             let total = result[1][0]['count(article_id)']
@@ -38,6 +38,7 @@ router
     try{
         let article = ctx.request.body
         article.create_time = formatDate()
+        console.log(article)
         await checkToken(ctx,next)
         await api.createArticle(article)
         ctx.body = {

@@ -1,9 +1,13 @@
 <template>
     <div class="wrapper">
         <v-header class="head"></v-header>
+        <div class="homecon-wrapper">
             <router-view class="content"></router-view>
-        
-        <v-footer class="foot"></v-footer>
+        </div>
+        <div class="homecon-wrapper">
+            <v-footer class="foot"></v-footer>
+        </div>
+
     </div>
 </template>
 
@@ -31,17 +35,24 @@
     flex-direction: column;
     height: 100%;
     .head,.foot{
-      flex:0 0 auto;
+        flex:0 0 auto;
     }
-    .content{
-        flex: 1 0 auto;
-        font-size:1.8rem;
-        margin: 0 auto;
-        width: 100%;
-        padding: 2rem;
-        padding-bottom: 0;
-        max-width: 1000px;
+    .foot{
+        border-top:1px solid #ddd;
     }
+    .homecon-wrapper{
+        background: #eee;
+        .content{
+            flex: 1 0 auto;
+            font-size:1.8rem;
+            margin: 0 auto;
+            width: 100%;
+            padding: 2rem;
+            padding-bottom: 0;
+            max-width: 1000px;
+        }
+    }
+    
 }
 @media screen and (max-width: 480px){
     .wrapper{

@@ -1,18 +1,18 @@
 <template>
     <div>
-        <div class="content-list">
+        <div class="content-list" v-loading="vloding" element-loading-text="加载中">
             <div class="content-item" v-for="(item,index) in article" :key="index">
                 <div class="post-title">
-                    <a class="text">{{item.title}}</a>
+                    <a class="text">{{item.article_title}}</a>
                     <!-- <router-link to="/article/123">{{item.title}}</router-link> -->
-                    <a href="" class="time">{{item.createTime}}</a>
+                    <a class="time">{{item.create_time}}</a>
                 </div>
                 <div class="post-desc">
-                    {{item.brief}}
+                    {{item.article_brief}}
                 </div>
                 <div class="post-footer">
-                    <a href="">{{item.classType}}</a>
-                    <a href="" class="post-more">阅读全文</a>
+                    <a href="" :style="item.bgColor">{{item.class_type}}</a>
+                    <a href="" class="post-more">阅读全文. . .</a>
                 </div>
             </div>
         </div>
@@ -21,12 +21,21 @@
 
 <script>
     export default {
-        props:['article'],
+        props:['article','vloding'],
         data() {
             return {
                 
             }
         },
+        computed:{
+            
+        },
+        methods:{
+            
+        },
+        created(){
+            
+        }
     }
 </script>
 
@@ -37,17 +46,22 @@
         .content-item{
             background: hsla(0,0%,100%,0.6);
             padding: 16px 20px 0;
-            border-radius: 3px;
-            box-shadow: 0 1px 2px rgba(151, 151, 151, 0.58);
-            margin: 0 0 3rem;
-            .post-time{
-                margin: 0 0 10px;
-                line-height: 14px;
-                font-size: 13px;
-                font-weight: bold;
-                color: #727272;
-                overflow: hidden;
+            transition: background 0.5s;
+
+            // border-radius: 3px;  
+            // box-shadow: 0 1px 2px rgba(151, 151, 151, 0.58);
+            &:hover{
+                // background: #e0e0e0f1;
             }
+            margin: 0 0 3rem;
+            // .post-time{
+            //     margin: 0 0 10px;
+            //     line-height: 14px;
+            //     font-size: 13px;
+            //     font-weight: bold;
+            //     color: #000;
+            //     overflow: hidden;
+            // }
             .post-title{
                 display: flex;
                 flex-direction:row;
@@ -57,29 +71,34 @@
                 .text{
                     font-size: 2.5rem;
                     position: relative;
-                    &:after{
-                        content:'';
-                        position: absolute;
-                        width: 100%;
-                        height: 2px;
-                        bottom: 0;
-                        left: 0;
-                        background-color: #3f51b5;
-                        transition: all 0.3s ease-in-out;
-                        transform: scaleX(0)
+                    transition: all 0.5s;
+                    &:hover{
+                        transform: translateX(18px);
+                        text-decoration:underline;
                     }
-                    &:hover:after{
-                        transform: scaleX(1);
+                    // &:after{
+                    //     content:'';
+                    //     position: absolute;
+                    //     width: 100%;
+                    //     height: 2px;
+                    //     bottom: 0;
+                    //     left: 0;
+                    //     background-color: #9c9c9c7c;
+                    //     transition: all 0.3s ease-in-out;
+                    //     transform: scaleX(0)
+                    // }
+                    // &:hover:after{
+                    //     transform: scaleX(1);
 
-                    }
+                    // }
                 }
                 .time{
                     font-size: 1.6rem;
                     padding: 0.5rem;
                     transition: background 0.5s;
+                    color: rgb(124, 124, 124);
                     &:hover{
-                        background: #eaecf7;
-                        
+                        background: #c8cfcf7c;
                     }
                 }
             }
@@ -99,18 +118,20 @@
                 a{
                     display: inline-block;
                     padding: 0 0.6rem;
-                    background: #eaecf7;
+                    // background: #eee;
                     font-size: 1.6rem;
                     line-height: 3rem;
                     margin-right: 0.6rem;
-                    color:#3f51b5;
+                    color:#6f7c88;
                 }
                 .post-more{
                     display: inline-block;
                     padding: 0 1rem;
                     text-align: center;
+                    background: #eee;
+                    transition: background 0.5s;
                     &:hover{
-                        background: #eaecf7;
+                        background: #b6b6b67c;
                     }
                 }
             }

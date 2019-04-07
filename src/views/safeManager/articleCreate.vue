@@ -143,7 +143,7 @@
             },
             // 获取分类列表
             getClassList(){
-                this.$api.classList({})
+                this.$api.classList()
                 .then(({data:{code,classList,total}}) => {
                     if(code === 200){
                         this.classifyList = classList
