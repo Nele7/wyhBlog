@@ -11,6 +11,7 @@ const router =  new VueRouter({
 })
 // 路由钩子
 router.beforeEach(({meta,path},from,next)=>{
+    console.log(meta)
     let {auth=true}=meta  //meta为false则auth为false；否则auth为true
     let isLogin = Boolean(store.state.token) //转换为true or false
     /*

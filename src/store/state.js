@@ -1,3 +1,6 @@
+import router from '../router/index'
+import Vue from 'vue'
+console.log(Vue.prototype.$store)
 const state = {
     headline: '',
     token:isLoggedIn()|| ''

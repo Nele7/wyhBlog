@@ -16,7 +16,8 @@ export default {
                     duration:1000,
                     onClose:function(){
                         commit('USER_SIGNIN',data.message.token)
-                        router.replace('/admin')
+                        console.log(router)
+                        // router.replace('/admin')
                     }
                 });
             }else{

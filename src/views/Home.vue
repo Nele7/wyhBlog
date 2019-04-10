@@ -49,13 +49,6 @@
                         this.listLoading = true
                         
                         setTimeout(()=>{
-                            // articleLists.forEach((item,index) => {
-                            //     let r = Math.floor(Math.random(255)*255)
-                            //     let g = Math.floor(Math.random(255)*255)
-                            //     let b = Math.floor(Math.random(255)*255)
-                            //     item.bgColor = `background:rgb(${r},${g},${b});color:#000`
-                            // })
-                            this.bgColor(articleLists)
                             this.articleList = articleLists
                             this.listLoading = false
                             this.total = total
@@ -63,14 +56,6 @@
                         },1000)
                         
                     }
-                })
-            },
-            bgColor(data){
-                data.forEach((item,index) => {
-                    let r = Math.floor(Math.random(255)*255)
-                    let g = Math.floor(Math.random(255)*255)
-                    let b = Math.floor(Math.random(255)*255)
-                    item.bgColor = `background:rgb(${r},${g},${b});color:#000`
                 })
             }
         },

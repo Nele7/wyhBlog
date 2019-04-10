@@ -11,8 +11,10 @@
                     {{item.article_brief}}
                 </div>
                 <div class="post-footer">
-                    <a href="" :style="item.bgColor">{{item.class_type}}</a>
-                    <a href="" class="post-more">阅读全文. . .</a>
+                    <div class="post-footer-total">
+                        <a href="" >{{item.class_type}}</a>
+                        <a href="" class="post-more">阅读全文. . .</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,21 +49,7 @@
             background: hsla(0,0%,100%,0.6);
             padding: 16px 20px 0;
             transition: background 0.5s;
-
-            // border-radius: 3px;  
-            // box-shadow: 0 1px 2px rgba(151, 151, 151, 0.58);
-            &:hover{
-                // background: #e0e0e0f1;
-            }
             margin: 0 0 3rem;
-            // .post-time{
-            //     margin: 0 0 10px;
-            //     line-height: 14px;
-            //     font-size: 13px;
-            //     font-weight: bold;
-            //     color: #000;
-            //     overflow: hidden;
-            // }
             .post-title{
                 display: flex;
                 flex-direction:row;
@@ -69,30 +57,18 @@
                 align-items: center;
                 margin: 0 0 16px;
                 .text{
+                    flex: 1;
                     font-size: 2.5rem;
                     position: relative;
                     transition: all 0.5s;
+                    cursor: pointer;
                     &:hover{
                         transform: translateX(18px);
                         text-decoration:underline;
                     }
-                    // &:after{
-                    //     content:'';
-                    //     position: absolute;
-                    //     width: 100%;
-                    //     height: 2px;
-                    //     bottom: 0;
-                    //     left: 0;
-                    //     background-color: #9c9c9c7c;
-                    //     transition: all 0.3s ease-in-out;
-                    //     transform: scaleX(0)
-                    // }
-                    // &:hover:after{
-                    //     transform: scaleX(1);
-
-                    // }
                 }
                 .time{
+                    width: 144px;
                     font-size: 1.6rem;
                     padding: 0.5rem;
                     transition: background 0.5s;
@@ -113,25 +89,26 @@
                 overflow: hidden;
             }
             .post-footer{
-                padding: 1rem;
+                display: flex;
+                justify-content: flex-end;
+                padding: 1rem 0;
                 border-top:1px solid #ddd;
-                a{
-                    display: inline-block;
-                    padding: 0 0.6rem;
-                    // background: #eee;
-                    font-size: 1.6rem;
-                    line-height: 3rem;
-                    margin-right: 0.6rem;
-                    color:#6f7c88;
-                }
-                .post-more{
-                    display: inline-block;
-                    padding: 0 1rem;
-                    text-align: center;
-                    background: #eee;
-                    transition: background 0.5s;
-                    &:hover{
-                        background: #b6b6b67c;
+                .post-footer-total{
+                    display: flex;
+                    justify-content: flex-end;
+                    a{
+                        display: inline-block;
+                        padding: 0 0.8rem;
+                        background: #eee;
+                        font-size: 1.6rem;
+                        line-height: 3rem;
+                        margin-left: 0.6rem;
+                        text-align: center;
+                        color:#6f7c88;
+                        transition: background 0.5s;
+                        &:hover{
+                            background: #b6b6b67c;
+                        }
                     }
                 }
             }
