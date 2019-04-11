@@ -3,9 +3,9 @@
         <div class="classfiy">
             <div v-for="(item,index) in classfiyList" class="classfiy-item" 
                 :class="{'active':classfiyActive==index}" 
-                :key="index" @click="gets(index)">{{item.class_type}}</div>
+                :key="index" @click="gets(index,item.class_type)">{{item.class_type}}</div>
         </div>
-        <article-item :article = "articleList"></article-item>
+        <article-item :article = "articleList" v-if="articleList.length > 0"></article-item>
     </div>
 </template>
 
@@ -16,14 +16,8 @@
             return {
                 classfiyList: [],
                 classfiyActive:0,
-                articleList: [
-                    {
-                        brief:'Promise含义Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。Promise 就是一个容器，通常是一个异步操作，从语法上来说，Promise是...',
-                        classType:'前端',
-                        createTime:'2019-10-4',
-                        title:'es6-Promise'
-                    }
-                ]
+                articleList: [],
+                clickClassify:'',//点击的分类
             }
         },
         mounted(){
@@ -31,8 +25,10 @@
             this.$store.dispatch('changeHeadLine','标签')
         },
         methods: {
-            gets(ind) {
+            gets(ind,classify) {
                 this.classfiyActive = ind
+                this.clickClassify = classify
+                this.getClassifyArticleLists()
             },
             // 获取分类列表
             getClassifyLists(){
@@ -40,9 +36,18 @@
                 .then(({data:{code,classList}}) => {
                     this.classfiyList = classList
                     console.log(classList)
-                }).catch((err) => {
-                    
-                });
+                }).catch((err) => {});
+            },
+            // 根据分类获取文章列表
+            getClassifyArticleLists(){
+                this.$api.getClassifyArticleLists({
+                    classify:this.clickClassify
+                })
+                .then(({data:{code,articleLists}}) => {
+                    if(code === 200){
+                        this.articleList = articleLists
+                    }
+                }).catch((err) => {});
             }
         },
         components:{

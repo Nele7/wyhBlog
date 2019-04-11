@@ -103,4 +103,37 @@ router
         }
     }
 })
+// 根据分类获取文章列表
+.post('/noAuthArtilcelists', async(ctx)=>{
+    try{
+        let classify = ctx.request.body.classify
+        let articleLists = await api.getArticlesByClassify(classify)
+        ctx.body = {
+            code:200,
+            articleLists
+        }
+    }catch(err){
+        ctx.body = {
+            code:-200,
+            message:err.toString()
+        }
+    }
+})
+// 获取文章详情
+.post('/noAuthOneArtilceDetail', async(ctx)=>{
+    try{
+        let articleId = ctx.request.body.articleId
+        let article = await api.getOneArticleDetail(articleId)
+        ctx.body = {
+            code:200,
+            article:article[0]
+        }
+    }catch(err){
+        ctx.body = {
+            code:-200,
+            message:err.toString()
+        }
+    }
+})
+
 module.exports = router

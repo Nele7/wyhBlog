@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import router from '../router/index';
-import api from '../assets/js/axios'
+import api from '../api/'
 
 export default {
     //保存路由跳转header组件中的title
@@ -16,8 +16,7 @@ export default {
                     duration:1000,
                     onClose:function(){
                         commit('USER_SIGNIN',data.message.token)
-                        console.log(router)
-                        // router.replace('/admin')
+                        router.replace('/admin')
                     }
                 });
             }else{

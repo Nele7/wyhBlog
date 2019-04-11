@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import { setTimeout } from 'timers';
 export default {
     data() {
         return {

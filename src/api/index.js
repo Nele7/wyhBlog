@@ -82,7 +82,13 @@ export default {
     // 删除分类
     deleteClass(data){
         return back.post('/classify/delete',data)
+    },
+    // 根据分类获取文章列表
+    getClassifyArticleLists(data){
+        return back.post('/article/noAuthArtilcelists',data)
+    },
+    // 获取一篇文章详情
+    getOneArticleDetail(data){
+        return back.post('/article/noAuthOneArtilceDetail',data)
     }
-    
-    
 }

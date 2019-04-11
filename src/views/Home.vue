@@ -52,7 +52,6 @@
                             this.articleList = articleLists
                             this.listLoading = false
                             this.total = total
-                            console.log(this.articleList)
                         },1000)
                         
                     }

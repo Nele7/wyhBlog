@@ -3,9 +3,12 @@ import App from './App.vue'
 import router from './router/index'
 import store from './store/store'
 import './assets/css/common.scss'
+import './assets/css/default.scss'
+import './assets/css/default0.scss'
+import './assets/css/highlight.scss'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import api from './assets/js/axios'
+import api from './api/'
 import con from './config/'
 Vue.use(ElementUI)
 Vue.config.productionTip = false

@@ -3,8 +3,8 @@
         <div class="content-list" v-loading="vloding" element-loading-text="加载中">
             <div class="content-item" v-for="(item,index) in article" :key="index">
                 <div class="post-title">
-                    <a class="text">{{item.article_title}}</a>
-                    <!-- <router-link to="/article/123">{{item.title}}</router-link> -->
+                    <!-- <a class="text">{{item.article_title}}</a> -->
+                    <router-link class="text" :to="`/article/${item.article_id}`">{{item.article_title}}</router-link>
                     <a class="time">{{item.create_time}}</a>
                 </div>
                 <div class="post-desc">
@@ -13,7 +13,7 @@
                 <div class="post-footer">
                     <div class="post-footer-total">
                         <a href="" >{{item.class_type}}</a>
-                        <a href="" class="post-more">阅读全文. . .</a>
+                        <router-link :to="`/article/${item.article_id}`" class="post-more">阅读全文. . .</router-link>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
             
         },
         created(){
-            
+            console.log(this.article)
         }
     }
 </script>
@@ -61,6 +61,7 @@
                     font-size: 2.5rem;
                     position: relative;
                     transition: all 0.5s;
+                    color:rgb(66, 66, 66);
                     cursor: pointer;
                     &:hover{
                         transform: translateX(18px);
@@ -68,7 +69,7 @@
                     }
                 }
                 .time{
-                    width: 144px;
+                    width: 162px;
                     font-size: 1.6rem;
                     padding: 0.5rem;
                     transition: background 0.5s;

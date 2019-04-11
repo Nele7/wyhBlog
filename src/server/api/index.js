@@ -51,7 +51,7 @@ module.exports = {
                 query(`SELECT count(class_id) FROM classify`)
             ])
         }else{
-            return query(`SELECT * FROM classify ORDER BY create_time DESC`)
+            return query(`SELECT * FROM classify ORDER BY class_id DESC`)
         }
     },
     // 新建分类 管理员
@@ -65,6 +65,13 @@ module.exports = {
     // 删除一条分类
     deleteOneClass(class_id){
         return query(`DELETE FROM classify WHERE class_id = ${class_id}`)
+    },
+    // 根据分类获取文章列表
+    getArticlesByClassify(classType){
+        return query(`SELECT article_id,article_title,article_brief,create_time,class_type FROM article WHERE class_type = '${classType}' ORDER BY article_id DESC`)
+    },
+    // 查看一篇文章详情
+    getOneArticleDetail(articleId){
+        return query(`SELECT * FROM article WHERE article_id = ${articleId}`)
     }
-    
 }

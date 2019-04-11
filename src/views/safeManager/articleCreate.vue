@@ -48,7 +48,7 @@
 
 <script>
     import marked from 'marked'
-    import highlight from 'highlight.js'
+    import hlj from 'highlight.js'
     import "highlight.js/styles/atom-one-dark.css";
 
     export default {
@@ -59,7 +59,7 @@
                 btnText:'立即发布',
                 article:{
                     article_title:'',       // 文章标题
-                    class_type:'',   // 文章类别
+                    class_type:'',          // 文章类别
                     article_brief:'',       //文章简介
                     article_content:'',     //文章内容
                 },
@@ -86,11 +86,16 @@
                         return hlj.highlightAuto(code).value;
                     }
                 });
-                return marked(this.article.article_content);
+                return marked(this.handleQuotationMark);
+            },
+            // 处理单引号变为双引号
+            handleQuotationMark(){
+                return this.article.article_content.replace(/'/g,'"')
             }
         },
         created(){
             this.getClassList()
+            // console.log(this.handleQuotationMark())
         },
         methods: {
             //发布或者编辑
@@ -103,8 +108,11 @@
                             this.btnText = '发布中'
                             this.$api
                                 .createArticle({
-                                    article_contentToMark:this.markedToHtml,
-                                    ...this.article
+                                    article_title:this.article.article_title,
+                                    class_type:this.article.class_type,
+                                    article_brief:this.article.article_brief,
+                                    article_content:this.handleQuotationMark,
+                                    article_contentToMark:this.markedToHtml
                                 })
                                 .then(({data:{code,message}})=>{
                                     this.btnText = '立即发布'

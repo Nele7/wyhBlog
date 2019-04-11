@@ -48,7 +48,7 @@
 
 <script>
     import marked from 'marked'
-    import highlight from 'highlight.js'
+    import hlj from 'highlight.js'
     import "highlight.js/styles/atom-one-dark.css";
 
     export default {

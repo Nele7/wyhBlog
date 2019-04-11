@@ -24,7 +24,6 @@
 
 <script>
     import { mapState } from 'vuex'
-import { setTimeout } from 'timers';
     export default {
         data() {
             return {
