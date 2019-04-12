@@ -6,13 +6,17 @@
             <p>如果你和我一样是初窥前端的初学者，互相学习，共同进步。 </p>
             <p>如果你是一个前端的大牛，也由衷的希望你能留下些许的指教。</p>
             <div class="about-icon">
-                <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-GitHub">
-                    </use>
-                </svg>
-                <svg class="icon weibo" aria-hidden="true">
-                    <use xlink:href="#icon-weibo"></use>
-                </svg>
+                <a href="https://github.com/">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-GitHub">
+                        </use>
+                    </svg>
+                </a>
+                <a href="https://weibo.com/5272191125/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1">
+                    <svg class="icon weibo" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                </a>
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-weixin"></use>
                 </svg>
@@ -57,7 +61,6 @@
     }
     .weibo{
         margin: 0 10px;
-        
     }
 }
 </style>
