@@ -12,7 +12,7 @@
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.28s;
+  transition: opacity 0.5s;
 }
 
 .fade-enter,

@@ -1,5 +1,5 @@
 <template>
-    <div class="content-wrapper">
+    <div class="content-wrapper content">
         <div class="home-wrapper" v-loading ="listLoading" element-loading-text="加载中">
             <articleItem :article="articleList"></articleItem>
             <!-- 分页 -->
@@ -68,7 +68,6 @@
 .content-wrapper{
     display: flex;
     flex-direction:column;
-    
 }
 .pagination{
     text-align: center;

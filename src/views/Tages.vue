@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="content">
         <div class="classfiy">
             <div v-for="(item,index) in classfiyList" class="classfiy-item" 
                 :class="{'active':classfiyActive==index}" 
@@ -17,17 +17,19 @@
                 classfiyList: [],
                 classfiyActive:0,
                 articleList: [],
-                clickClassify:'',//点击的分类
+                clickClassify:'Vue',//默认分类
             }
         },
         mounted(){
             this.getClassifyLists()
             this.$store.dispatch('changeHeadLine','标签')
+            this.getClassifyArticleLists()
         },
         methods: {
             gets(ind,classify) {
                 this.classfiyActive = ind
                 this.clickClassify = classify
+                this.$store.dispatch('changeHeadLine',classify)
                 this.getClassifyArticleLists()
             },
             // 获取分类列表
@@ -81,6 +83,15 @@
         &:hover{
             background: #9797977c;
             color: #000;
+        }
+    }
+}
+@media screen and (max-width: 480px){
+    .classfiy{
+        .classfiy-item{
+            padding: 0 1.3rem;
+            margin: 0 0.4rem .5rem;
+            font-size: 1.5rem;
         }
     }
 }

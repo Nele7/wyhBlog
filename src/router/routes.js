@@ -28,7 +28,7 @@ export default [
         {path:'home',name: 'home',component: () => import( '../views/Home.vue'),meta: { auth: false }},
         {path:'tages',name: 'tages',component: () => import( '../views/Tages.vue'),meta: { auth: false }},
         {path:'about',name: 'about',component: () => import( '../views/About.vue'),meta: { auth: false }},
-        {path:'article/:id',name:'article',component: () => import( '../views/Article.vue'),meta: { auth: false }}
+        {path:'article/:classify/:id',name:'article',component: () => import( '../views/Article.vue'),meta: { auth: false }}
       ]
     },
     {

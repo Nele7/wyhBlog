@@ -8,6 +8,7 @@ import './assets/css/default0.scss'
 import './assets/css/highlight.scss'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import './assets/css/iconfont/iconfont.js'
 import api from './api/'
 import con from './config/'
 Vue.use(ElementUI)

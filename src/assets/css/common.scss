@@ -46,7 +46,8 @@
     font-size: 14px;
   }
   .article pre code{
-    color:#8492A6;
+    // color:#8492A6;
+    color:#13DBC6;
     display: block;
     background: #23241f;
     font: 16px Consolas, "Liberation Mono", Menlo, Courier, monospace;
@@ -126,4 +127,11 @@
     p code{
       font-size: 12px;
     }
+  }
+  .icon {
+    width: 50px;
+    height: 50px;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
   }

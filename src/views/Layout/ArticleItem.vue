@@ -3,8 +3,7 @@
         <div class="content-list" v-loading="vloding" element-loading-text="加载中">
             <div class="content-item" v-for="(item,index) in article" :key="index">
                 <div class="post-title">
-                    <!-- <a class="text">{{item.article_title}}</a> -->
-                    <router-link class="text" :to="`/article/${item.article_id}`">{{item.article_title}}</router-link>
+                    <router-link class="text" :to="`/article/${item.class_type}/${item.article_id}`">{{item.article_title}}</router-link>
                     <a class="time">{{item.create_time}}</a>
                 </div>
                 <div class="post-desc">
@@ -13,7 +12,7 @@
                 <div class="post-footer">
                     <div class="post-footer-total">
                         <a href="" >{{item.class_type}}</a>
-                        <router-link :to="`/article/${item.article_id}`" class="post-more">阅读全文. . .</router-link>
+                        <router-link :to="`/article/${item.class_type}/${item.article_id}`" class="post-more">阅读全文. . .</router-link>
                     </div>
                 </div>
             </div>
@@ -36,7 +35,6 @@
             
         },
         created(){
-            console.log(this.article)
         }
     }
 </script>
@@ -69,10 +67,11 @@
                     }
                 }
                 .time{
-                    width: 162px;
+                    width: 160px;
                     font-size: 1.6rem;
                     padding: 0.5rem;
-                    transition: background 0.5s;
+                    transition: all 0.5s;
+                    text-align: right;
                     color: rgb(124, 124, 124);
                     &:hover{
                         background: #c8cfcf7c;
@@ -106,7 +105,7 @@
                         margin-left: 0.6rem;
                         text-align: center;
                         color:#6f7c88;
-                        transition: background 0.5s;
+                        transition: all 0.5s;
                         &:hover{
                             background: #b6b6b67c;
                         }
@@ -114,5 +113,23 @@
                 }
             }
         }
-    }  
+    }
+@media screen and (max-width: 480px){
+    .content-list{
+        .content-item{
+            .post-title{
+                .time{
+                    font-size: 1.3rem;
+                }
+            }
+            .post-footer{
+                .post-footer-total{
+                    a{
+                        font-size: 1.3rem
+                    }
+                }
+            }
+        }
+    }
+}
 </style>

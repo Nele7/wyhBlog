@@ -4,13 +4,13 @@
         <nav>
             <div class="nav-bar">
                 <div class="nav-item">
-                    <router-link to="../home">主页</router-link>
+                    <router-link to="/home">主页</router-link>
                 </div>
                 <div class="nav-item">
-                    <router-link to="../tages">标签</router-link>
+                    <router-link to="/tages">标签</router-link>
                 </div>
                 <div class="nav-item">
-                    <router-link to="../about">关于</router-link>
+                    <router-link to="/about">关于</router-link>
                 </div>
             </div>
         </nav>
@@ -66,6 +66,7 @@ header{
     flex-direction: column;
     height: 30rem;
     width: 100%;
+    transition: all 0.5s;
     .bg{
         position: absolute;
         left: 0;
@@ -74,6 +75,7 @@ header{
         width: 100%;
         background: url(../../assets/img/img3.jpg) no-repeat center /cover;
         z-index: -1;
+        transition: all 0.5s;
     }
     .nav-bar{
         display: flex;
@@ -81,8 +83,10 @@ header{
         justify-content: flex-end;
         width: 100%;
         padding: 0 5rem;
+        transition: all 0.5s;
         .nav-item{
             font-size: 1.6rem;
+            transition: all 0.5s;
             a{
                 display: inline-block;
                 padding: 1.2rem 1.8rem;
@@ -100,6 +104,7 @@ header{
             color:#fff;
             font-weight: 400;
             font-size: 4rem;
+            transition: all 0.5s;
         }
     }
 }

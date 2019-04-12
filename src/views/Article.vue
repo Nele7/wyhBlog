@@ -1,6 +1,6 @@
 <template>
     
-        <article class="article_wrap article">
+        <article class="article_wrap article content">
             <header>
                 <div class="home_title">{{article.article_title}}</div>
                 <div>
@@ -20,9 +20,9 @@
                 article:{}
             }
         },
-        created(){
+        mounted(){
             this.getOneArticleDetail()
-            console.log(this.$route.params.id)
+            this.$store.dispatch('changeHeadLine',this.$route.params.classify)
         },
         methods: {
             getOneArticleDetail() {
@@ -41,5 +41,36 @@
 </script>
 
 <style scoped lang="scss">
-
+.article_wrap{
+    padding: 3rem;
+    .home_title{
+        font-size: 3rem;
+        font-weight: 400;
+        color: #404040;
+        padding: 1rem 0;
+    }
+    .home_creatAt{
+        font-family: Comic Sans MS,curslve,sans-serif;
+        padding: .6rem 0;
+        font-size: 1.8rem;
+        color: #7f8c8d;
+        margin: 0;
+    }
+}
+@media screen and (max-width: 768px){
+    .article_wrap{
+        .home_title{
+            font-size: 2.2rem;
+        }
+        .home_creatAt{
+            font-size: 1.6rem;
+        }
+    }
+}
+@media screen and (max-width: 480px){
+    .article_wrap{
+        width: 100%;
+        padding: 1rem 2rem;
+    }
+}
 </style>

@@ -17,6 +17,6 @@
     font-size: 1.3rem;
     flex: 0 0 auto;
     text-align: center;
-    border-top:1px solid #eee;
+    border-top:1px solid #ddd;
 }
 </style>

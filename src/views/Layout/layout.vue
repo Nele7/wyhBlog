@@ -2,12 +2,13 @@
     <div class="wrapper">
         <v-header class="head"></v-header>
         <div class="homecon-wrapper">
-            <router-view class="content"></router-view>
+            <transition name="faderouter" mode="out-in">
+                <router-view class="content"></router-view>
+            </transition>
         </div>
-        <div class="homecon-wrapper">
-            <v-footer class="foot"></v-footer>
+        <div class="foot-wrapper">
+            <v-footer></v-footer>
         </div>
-
     </div>
 </template>
 
@@ -24,11 +25,10 @@
 
 <style scoped lang="scss">
 .faderouter-enter-active,.faderouter-leave-active{
-    transition: all .3s;
+    transition: all .5s;
 }
 .faderouter-enter,.faderouter-leave-to{
     opacity: 0;
-    // transform: translateY(-10px)
 }
 .wrapper{
     display: flex;
@@ -37,26 +37,21 @@
     .head,.foot{
         flex:0 0 auto;
     }
-    .foot{
-        border-top:1px solid #ddd;
-    }
     .homecon-wrapper{
         background: #eee;
-        .content{
-            flex: 1 0 auto;
-            font-size:1.8rem;
-            margin: 0 auto;
-            width: 100%;
-            padding: 2rem;
-            padding-bottom: 0;
-            max-width: 1000px;
-        }
+        flex: 1 0 auto;
+        margin: 0 auto;
+        max-width: 1000px;
+        font-size:1.8rem;
+        width: 100%;
+        padding: 2rem 2rem 0;
+        box-sizing: border-box;
+        transition: all 0.5s;
     }
-    
 }
 @media screen and (max-width: 480px){
     .wrapper{
-        .content{
+        .homecon-wrapper{
             padding: 0;
         }
     }
