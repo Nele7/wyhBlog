@@ -1,7 +1,7 @@
 <template>
-    <div class="content-wrapper content">
-        <div class="home-wrapper" v-loading ="listLoading" element-loading-text="加载中">
-            <articleItem :article="articleList"></articleItem>
+    <div class="content-wrapper">
+        <div class="home-wrapper" v-loading ="listLoading" element-loading-background="#eee">
+            <articleItem :article="articleList" v-if="articleList.length >0"></articleItem>
             <!-- 分页 -->
             <div class="pagination">
                 <el-pagination
@@ -10,6 +10,7 @@
                     :total="total"
                     :current-page="page"
                     :page-size="pageSize"
+                    background
                     style="padding:20px"
                 ></el-pagination>
             </div>
@@ -47,13 +48,11 @@
                 }).then(({data:{code,articleLists,total}})=>{
                     if(code === 200){
                         this.listLoading = true
-                        
                         setTimeout(()=>{
                             this.articleList = articleLists
                             this.listLoading = false
                             this.total = total
                         },1000)
-                        
                     }
                 })
             }
@@ -68,6 +67,10 @@
 .content-wrapper{
     display: flex;
     flex-direction:column;
+    height: 100%;
+    .home-wrapper{
+        height: 100%;
+    }
 }
 .pagination{
     text-align: center;

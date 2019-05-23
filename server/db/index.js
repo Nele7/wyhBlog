@@ -2,11 +2,18 @@
 
 const mysql = require('mysql');
 
+// const POOL = mysql.createPool({
+//     host:'localhost', //连接数据库所在的主机名
+//     user:'root',      //MySQL用户的用户名
+//     password:'123',  //MySQL用户的密码
+//     database:'wyh',  //链接到的数据库名称
+// });
 const POOL = mysql.createPool({
-  host:'localhost', //连接数据库所在的主机名
-  user:'root',      //MySQL用户的用户名
-  password:'123',  //MySQL用户的密码
-  database:'wyh',  //链接到的数据库名称
+    host:'39.105.232.6', //连接数据库所在的主机名
+    user:'wyh',      //MySQL用户的用户名
+    password:'85y74PfCYz6GEmYf',  //MySQL用户的密码
+    database:'wyh',  //链接到的数据库名称
+    // port: '3006' //端口
 });
 
 module.exports = function( sql, values ) {

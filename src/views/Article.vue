@@ -1,16 +1,14 @@
 <template>
-    
-        <article class="article_wrap article content">
-            <header>
-                <div class="home_title">{{article.article_title}}</div>
-                <div>
-                    <p class="home_creatAt">{{article.create_time}}</p>
-                </div>
-            </header>
-            <section class="home_main article" v-html="article.article_contentToMark">
-            </section>
-        </article>
-   
+    <article class="article_wrap article content">
+        <header>
+            <div class="home_title">{{article.article_title}}</div>
+            <div>
+                <p class="home_creatAt">{{article.create_time}}</p>
+            </div>
+        </header>
+        <section class="home_main article" v-html="article.article_contentToMark">
+        </section>
+    </article>
 </template>
 
 <script>

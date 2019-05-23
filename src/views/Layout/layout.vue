@@ -38,6 +38,7 @@
         flex:0 0 auto;
     }
     .homecon-wrapper{
+        position: relative;
         background: #eee;
         flex: 1 0 auto;
         margin: 0 auto;

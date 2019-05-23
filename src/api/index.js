@@ -4,7 +4,7 @@ import axios from 'axios'
 //     baseURL:'http://localhost:3009/api'
 // })
 const back = axios.create({ //后台管理
-    baseURL:'http://localhost:3009/api'
+    baseURL:'http://39.105.232.6:3009/api'
 })
 // 设置post的请求头
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'

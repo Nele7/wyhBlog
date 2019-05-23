@@ -60,8 +60,8 @@
                 article:{
                     article_title:'',       // 文章标题
                     class_type:'',          // 文章类别
-                    article_brief:'',       //文章简介
-                    article_content:'',     //文章内容
+                    article_brief:'',       // 文章简介
+                    article_content:'',     // 文章内容
                 },
                 createRules:{
                     article_title:[
